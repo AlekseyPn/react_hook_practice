@@ -5,22 +5,25 @@ import {Profile} from "./pages/Profile";
 import {About} from "./pages/About";
 import {Alert} from "./components/Alert";
 import {AlertState} from "./context/alert/alertState";
+import {GitHubState} from "./context/github/GitHubState";
 
 function App() {
   return (
-      <AlertState>
-          <BrowserRouter>
-              <NavBar />
-              <div className="container pt-4">
-                  <Alert alert={{text: 'Test'}}/>
-                  <Routes>
-                      <Route path="/" exact element={<Home />} />
-                      <Route path="/about" element={<About />} />
-                      <Route path="/profile/:name" element={<Profile />} />
-                  </Routes>
-              </div>
-          </BrowserRouter>
-      </AlertState>
+     <GitHubState>
+         <AlertState>
+             <BrowserRouter>
+                 <NavBar />
+                 <div className="container pt-4">
+                     <Alert alert={{text: 'Test'}}/>
+                     <Routes>
+                         <Route path="/" exact="true" element={<Home />} />
+                         <Route path="/about" element={<About />} />
+                         <Route path="/profile/:name" element={<Profile />} />
+                     </Routes>
+                 </div>
+             </BrowserRouter>
+         </AlertState>
+     </GitHubState>
   );
 }
 
